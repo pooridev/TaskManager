@@ -1,4 +1,37 @@
+#root,
 body {
-  background-color: rgb(31, 32, 35);
+  height: 100%;
+}
+body {
+  background-color: var(--bodyColor);
   cursor: default;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: rgb(48, 50, 54);
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: rgb(48, 50, 54);
+}
+
+body::-webkit-scrollbar-track {
+  padding: 2px;
+  background-color: transparent;
+}
+
+:root {
+  --bodyColor: rgb(31, 32, 35);
+  --boxColor: rgb(39, 40, 43);
+  --boxShadow: rgb(0 0 0 / 7%) 0px 4px 44px;
+  --activeButton: rgb(45, 47, 54);
+  --sidebarBorder: rgb(48, 50, 54);
 }
