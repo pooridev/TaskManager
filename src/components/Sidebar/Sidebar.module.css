@@ -1,10 +1,8 @@
 .Sidebar {
   width: 220px;
-  height: 100%;
-  border-right: 1px;
+  height: 100vh;
   border-right: 1px solid var(--sidebarBorder);
   user-select: none;
   display: flex;
-  flex-direction: column;
-  overflow-y: auto;
+  @apply overflow-y-auto flex flex-col p-4;
 }

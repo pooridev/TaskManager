@@ -1,3 +1,8 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root,
 body {
   height: 100%;
@@ -5,6 +10,8 @@ body {
 body {
   background-color: var(--bodyColor);
   cursor: default;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
 }
 
 body::-webkit-scrollbar-thumb {

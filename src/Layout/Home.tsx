@@ -1,14 +1,7 @@
 import { FC } from 'react';
-import MainLayout from './MainLayout/MainLayout';
 
-export interface Props {}
-
-const Home: FC<Props> = () => {
-  return (
-      <MainLayout>
-        <header>Salam</header>
-      </MainLayout>
-  );
+const Home: FC = () => {
+  return <header>Salam</header>;
 };
 
 export default Home;

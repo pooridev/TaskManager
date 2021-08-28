@@ -1,0 +1,25 @@
+.NewTask {
+  border: 1px solid rgb(69, 72, 78);
+  background: var(--sidebarBorder);
+  @apply flex items-center justify-between mt-9 rounded-md;
+}
+
+.NewTaskButtonWrapper {
+  @apply px-2 flex-1;
+}
+
+.NewTaskButton {
+  color: rgb(215, 216, 219);
+  @apply bg-transparent w-full border-none flex gap-2 p-1 items-center;
+}
+
+.SelectList {
+  border-left: 1px solid var(--bodyColor);
+  @apply px-3 py-2;
+}
+
+.SelectListButton {
+  color: rgb(215, 216, 219);
+  border-left: 1px solid var(--bodyColor);
+  @apply bg-transparent border-none;
+}

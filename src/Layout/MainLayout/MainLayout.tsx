@@ -1,5 +1,5 @@
 import { FC, ReactChild } from 'react';
-import Sidebar from '../../components/Home/Sidebar';
+import Sidebar from '../../components/Sidebar/index';
 import styles from './MainLayout.module.css';
 
 interface Props {
