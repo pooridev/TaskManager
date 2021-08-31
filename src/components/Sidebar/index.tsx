@@ -2,6 +2,8 @@ import { FC, useState } from 'react';
 import NewTask from './NewTask';
 import Avatar from './Avatar';
 import styles from './Sidebar.module.css';
+import Actions from './Actions';
+import Lists from './Lists';
 
 const Sidebar: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -17,6 +19,8 @@ const Sidebar: FC = () => {
         isOpen={isOpen}
         onOpen={openDropdownHandler}
       />
+      <Actions />
+      <Lists />
     </nav>
   );
 };

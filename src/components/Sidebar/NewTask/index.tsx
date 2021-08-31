@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useRef } from 'react';
 import ListDropdown from '../ListDropdown';
 import styles from './NewTask.module.css';
 
@@ -9,8 +9,9 @@ export interface Props {
 }
 
 const NewTask: FC<Props> = ({ isOpen, onOpen, onClose }) => {
+  const newTaskRef = useRef<HTMLDivElement>(null)
   return (
-    <div className={styles['NewTask']}>
+    <div className={styles['NewTask']} ref={newTaskRef}>
       <div className={styles['NewTaskButtonWrapper']}>
         <button className={styles['NewTaskButton']}>
           <svg
@@ -27,7 +28,7 @@ const NewTask: FC<Props> = ({ isOpen, onOpen, onClose }) => {
           New task
         </button>
       </div>
-      <div className={styles['SelectList']} onClick={onOpen}>
+      <div className={styles['SelectList']} onClick={isOpen ? onClose : onOpen}>
         <button className={styles['SelectListButton']}>
           <svg width='13' height='9' viewBox='0 0 13 9' fill='currentcolor'>
             <path
@@ -36,7 +37,7 @@ const NewTask: FC<Props> = ({ isOpen, onOpen, onClose }) => {
           </svg>
         </button>
       </div>
-      {isOpen && <ListDropdown onClose={onClose} />}
+       <ListDropdown newTaskRef={newTaskRef} isOpen={isOpen} onClose={onClose} />
     </div>
   );
 };

@@ -1,9 +1,9 @@
 .Avatar {
   color: rgb(215, 216, 219);
-  @apply flex items-center gap-3 text-base
+  @apply flex items-center gap-2 text-base
 }
 
 .UserAvatar {
-  max-height: 30px;
-  @apply rounded-md
+  max-height: 25px;
+  @apply rounded-md mr-1
 }

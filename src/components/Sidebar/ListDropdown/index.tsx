@@ -1,18 +1,22 @@
-import { FC, useRef } from 'react';
+import { FC, ForwardedRef, Ref, useRef } from 'react';
 import styles from './ListDropdown.module.css';
 import useOutsideClickHandler from './../../../hooks/useOutsideClickHandler';
 
 interface Props {
   onClose: () => void;
+  isOpen: boolean;
+  newTaskRef: any;
 }
 
-const ListDropdown: FC<Props> = ({ onClose }) => {
+const ListDropdown: FC<Props> = ({ onClose, isOpen, newTaskRef }) => {
   const dropdownRef = useRef(null);
-
-  useOutsideClickHandler(dropdownRef, onClose);
+  useOutsideClickHandler(dropdownRef, newTaskRef, onClose);
 
   return (
-    <div className={styles['Dropdown']} role='menu' ref={dropdownRef}>
+    <div
+      className={`${styles['Dropdown']} ${isOpen ? styles['Open'] : ''}`}
+      role='menu'
+      ref={dropdownRef}>
       <div className={styles['Option']}>
         <svg width='16' height='16' viewBox='0 0 16 16' fill='#8A8F98'>
           <path d='M1 3C1 1.89543 1.89543 1 3 1H9C10.1046 1 11 1.89543 11 3V3.5H6C4.61929 3.5 3.5 4.61929 3.5 6V11H3C1.89543 11 1 10.1046 1 9V3Z'></path>
