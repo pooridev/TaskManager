@@ -6,9 +6,9 @@ import useOutsideClickHandler from '../../hooks/useOutsideClickHandler';
 
 interface Props {
   secondRef: any;
-  options: [];
+  options: Array<any>;
   isOpen: boolean;
-  fallbackText: string;
+  fallbackText?: string;
   onClose: () => void;
 }
 
@@ -24,10 +24,10 @@ const Menu: FC<Props> = props => {
       role='menu'
       ref={menuRef}>
       {options.length ? (
-        options.map((list: { title: string; iconName: string }) => (
+        options.map((item: any) => (
           <div className={styles['Option']}>
-            <Icon iconName={list['iconName']} />
-            <span>{list['title']}</span>
+            <Icon iconName={item['iconName']} />
+            <span>{item['title']}</span>
           </div>
         ))
       ) : (

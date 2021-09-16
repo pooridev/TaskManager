@@ -4,5 +4,5 @@
   border-right: 1px solid var(--sidebarBorder);
   user-select: none;
   display: flex;
-  @apply overflow-y-auto flex flex-col p-4;
+  @apply flex flex-col p-4;
 }

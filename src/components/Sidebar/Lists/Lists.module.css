@@ -3,7 +3,7 @@
 }
 
 .Lists li {
-  @apply mt-2;
+  @apply mt-2 relative;
 }
 
 .Header {

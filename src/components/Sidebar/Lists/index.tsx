@@ -4,6 +4,7 @@ import styles from './Lists.module.css';
 import { openList, openMenu, closeMenu } from './../../../redux/actions/List';
 import ListDropdown from '../ListDropdown';
 import Icon from './../../../shared/Icon';
+import Menu from './../../../shared/Menu/Menu';
 
 const Lists: FC = () => {
   const [areListsOpen, setAreListsOpen] = useState<boolean>(false);
@@ -59,14 +60,15 @@ const Lists: FC = () => {
                   className={styles['OpenOptionsButton']}>
                   <Icon iconName='threeDots' />
                 </button>
-                {item['isMenuOpen'] && (
-                  <ListDropdown
-                    newTaskRef={titleRef}
-                    isOpen
-                    onClose={() => dispatch(closeMenu(item['id']))}
-                  />
-                )}
               </div>
+              {item['isMenuOpen'] && (
+                <Menu
+                  options={[{ title: 'delete', iconName: 'delete' }]}
+                  secondRef={titleRef}
+                  isOpen
+                  onClose={() => dispatch(closeMenu(item['id']))}
+                />
+              )}
               <ul
                 className={`${styles['Tasks']} ${
                   item['isOpen'] ? styles['OpenTasks'] : ''

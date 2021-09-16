@@ -5,8 +5,10 @@
     rgb(45, 46, 49) 74.3%
   );
   position: absolute;
-  top: 8.2rem;
-  left: 12rem;
+  top: 120%;
+  left: 10rem;
+  width: 80%;
+  z-index: 5;
   @apply flex flex-col rounded-md opacity-0;
 }
 

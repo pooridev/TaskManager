@@ -26,9 +26,9 @@ const initialState: ListState = {
       isOpen: false,
       isMenuOpen: false,
       tasks: [
-        { title: 'Fixing', id: 1, isDone: false, description: 'Fix api bugs' },
-        { title: '474', id: 1, isDone: false, description: 'Fix api bugs' },
-        { title: 'dfdf', id: 1, isDone: false, description: 'Fix api bugs' }
+        { title: 'Auth', id: 1, isDone: false, description: 'Fix api bugs' },
+        { title: 'API', id: 1, isDone: false, description: 'Fix api bugs' },
+        { title: 'Bug fix', id: 1, isDone: false, description: 'Fix api bugs' }
       ]
     },
     {
@@ -39,7 +39,7 @@ const initialState: ListState = {
       isMenuOpen: false,
       tasks: [
         {
-          title: 'Designing',
+          title: 'IG content',
           id: 1,
           isDone: false,
           description: 'Fix api bugs'
