@@ -3,6 +3,7 @@ import { AnyAction } from 'redux';
 
 interface ListState {
   lists: {
+    iconName: string;
     title: string;
     id: number;
     isOpen: boolean;
@@ -19,6 +20,7 @@ interface ListState {
 const initialState: ListState = {
   lists: [
     {
+      iconName: 'profile',
       title: 'Calistu',
       id: 1,
       isOpen: false,
@@ -30,6 +32,7 @@ const initialState: ListState = {
       ]
     },
     {
+      iconName: 'profile',
       title: 'Junior-Coders',
       id: 2,
       isOpen: false,

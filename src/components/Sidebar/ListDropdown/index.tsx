@@ -3,6 +3,7 @@ import styles from './ListDropdown.module.css';
 import useOutsideClickHandler from './../../../hooks/useOutsideClickHandler';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import Icon from '../../../shared/Icon';
+import Menu from '../../../shared/Menu/Menu';
 
 interface Props {
   onClose: () => void;
@@ -10,31 +11,18 @@ interface Props {
   newTaskRef?: any;
 }
 
-const ListDropdown: FC<Props> = ({ onClose, isOpen, newTaskRef }) => {
-  const dropdownRef = useRef(null);
-  useOutsideClickHandler(dropdownRef, newTaskRef, onClose);
-
+const NewListMenu: FC<Props> = ({ onClose, isOpen, newTaskRef }) => {
   const { lists } = useSelector((state: RootStateOrAny) => state);
 
   return (
-    <div
-      className={`${styles['Dropdown']} ${isOpen ? styles['Open'] : ''}`}
-      role='menu'
-      ref={dropdownRef}>
-      {lists.length ? (
-        lists.map((list: { title: string }) => (
-          <div className={styles['Option']}>
-            <Icon iconName='profile' />
-            <span>{list['title']}</span>
-          </div>
-        ))
-      ) : (
-        <div className={styles['Option']}>
-          <span>create new list</span>
-        </div>
-      )}
-    </div>
+    <Menu
+      secondRef={newTaskRef}
+      options={lists}
+      isOpen={isOpen}
+      fallbackText='create new list'
+      onClose={onClose}
+    />
   );
 };
 
-export default ListDropdown;
+export default NewListMenu;

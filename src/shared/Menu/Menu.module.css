@@ -1,4 +1,4 @@
-.Dropdown {
+.Menu {
   background: linear-gradient(
     136.61deg,
     rgb(39, 40, 43) 13.72%,
@@ -10,7 +10,7 @@
   @apply flex flex-col rounded-md opacity-0;
 }
 
-.Dropdown.Open {
+.Menu.Open {
   transition: opacity 0.1s ease-in-out;
   @apply opacity-100;
 }
