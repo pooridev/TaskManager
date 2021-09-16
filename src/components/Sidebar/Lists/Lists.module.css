@@ -65,7 +65,7 @@
 }
 
 .Title {
-  @apply rounded-md font-medium flex px-3 gap-3 items-center text-gray-300;
+  @apply rounded-md font-medium flex px-3 justify-between text-gray-300;
 }
 
 .Title svg {
@@ -76,8 +76,25 @@
   background: rgb(45, 47, 54);
 }
 
+.OpenOptionsButton:hover.Title {
+  background: transparent !important;
+}
+
+.Title:hover .OpenOptionsButton svg {
+  @apply opacity-100;
+}
+
+.OpenOptionsButton svg {
+  transition: all 0.1s ease;
+  @apply opacity-0;
+}
+
+.OpenOptionsButton:hover svg {
+  fill: rgb(209, 213, 219);
+}
+
 .Task {
-  @apply flex items-center gap-2 rounded-md pl-8 text-gray-200
+  @apply flex items-center gap-2 rounded-md pl-8 text-gray-200;
 }
 
 .Task:hover {

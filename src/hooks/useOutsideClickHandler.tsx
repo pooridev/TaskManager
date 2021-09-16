@@ -1,10 +1,26 @@
 import { useEffect } from 'react';
 
-const useOutsideClickHandler = (ref: any, secondRef: any, callback: any):void => {
+const useOutsideClickHandler = (
+  ref: any,
+  secondRef: any,
+  callback: () => void
+): void => {
   useEffect(() => {
     const handleClickOutside = (evt: any) => {
-      if (ref.current && !ref.current.contains(evt.target) && !secondRef.current.contains(evt.target)) {
-        callback(); //Do what you want to handle in the callback
+      if (secondRef) {
+        if (
+          ref.current &&
+          !ref.current.contains(evt.target) &&
+          !secondRef.current.contains(evt.target)
+        ) {
+          callback();
+        }
+        return;
+      }
+
+      if (ref.current && !ref.current.contains(evt.target)) {
+        callback();
+        return;
       }
     };
     document.addEventListener('mousedown', handleClickOutside);

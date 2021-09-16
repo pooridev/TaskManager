@@ -7,12 +7,12 @@
   position: absolute;
   top: 8.2rem;
   left: 12rem;
-  @apply flex flex-col rounded-md transform scale-0;
+  @apply flex flex-col rounded-md opacity-0;
 }
 
 .Dropdown.Open {
-  transition: transform 0.1s ease-in-out;
-  @apply transform scale-100;
+  transition: opacity 0.1s ease-in-out;
+  @apply opacity-100;
 }
 
 .Option {
@@ -26,7 +26,6 @@
 .Option:nth-child(1) {
   @apply rounded-t-md;
 }
-
 
 .Option:hover {
   background: rgb(55, 55, 60);

@@ -7,3 +7,17 @@ export const openList = (payload: number): AnyAction => {
     payload
   };
 };
+
+export const openMenu = (payload: number): AnyAction => {
+  return {
+    type: types.OPEN_MENU,
+    payload
+  };
+};
+
+export const closeMenu = (payload: number): AnyAction => {
+  return {
+    type: types.CLOSE_MENU,
+    payload
+  };
+};

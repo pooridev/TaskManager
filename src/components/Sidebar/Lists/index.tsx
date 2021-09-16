@@ -1,29 +1,33 @@
-import { FC, useState } from 'react';
+import { FC, useState, useRef, MouseEventHandler } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import styles from './Lists.module.css';
-import { openList } from './../../../redux/actions/List';
+import { openList, openMenu, closeMenu } from './../../../redux/actions/List';
+import ListDropdown from '../ListDropdown';
+import Icon from './../../../shared/Icon';
 
 const Lists: FC = () => {
   const [areListsOpen, setAreListsOpen] = useState<boolean>(false);
+  const titleRef = useRef(null);
   const dispatch = useDispatch();
 
   const { lists } = useSelector((state: RootStateOrAny) => state);
 
   const toggleListsDropdown = () => setAreListsOpen(prev => !prev);
 
+  const openListOptionsHandler = (e: any, id: number) => {
+    e.stopPropagation();
+    dispatch(openMenu(id));
+  };
+
   return (
     <div className={styles['Lists']}>
       <header className={styles['Header']} onClick={toggleListsDropdown}>
         <h3>
           your lists
-          <svg
+          <Icon
+            iconName='arrowRight'
             className={areListsOpen ? styles['RotateArrow'] : ''}
-            width='6'
-            height='7'
-            viewBox='0 0 6 7'
-            fill='#8A8F98'>
-            <path d='M5.25 3.20126C5.58333 3.39371 5.58333 3.87484 5.25 4.06729L0.749999 6.66537C0.416666 6.85782 -2.38418e-07 6.61725 -2.38418e-07 6.23235L-2.38418e-07 1.0362C-2.38418e-07 0.651301 0.416666 0.410738 0.75 0.603188L5.25 3.20126Z'></path>
-          </svg>
+          />
         </h3>
       </header>
       <ul
@@ -34,22 +38,34 @@ const Lists: FC = () => {
           (item: {
             id: number;
             isOpen: boolean;
+            isMenuOpen: boolean;
             title: string;
-            tasks: { id: number; title: string }[];
+            tasks: Array<{ id: number; title: string }>;
           }) => (
             <li className={styles['List']}>
               <div
+                ref={titleRef}
                 className={styles['Title']}
                 onClick={() => dispatch(openList(item['id']))}>
-                <svg
-                  className={item['isOpen'] ? styles['RotateArrow'] : ''}
-                  width='6'
-                  height='7'
-                  viewBox='0 0 6 7'
-                  fill='#8A8F98'>
-                  <path d='M5.25 3.20126C5.58333 3.39371 5.58333 3.87484 5.25 4.06729L0.749999 6.66537C0.416666 6.85782 -2.38418e-07 6.61725 -2.38418e-07 6.23235L-2.38418e-07 1.0362C-2.38418e-07 0.651301 0.416666 0.410738 0.75 0.603188L5.25 3.20126Z'></path>
-                </svg>
-                <span>{item['title']}</span>
+                <span className='flex items-center gap-2'>
+                  <Icon
+                    iconName='arrowRight'
+                    className={item['isOpen'] ? styles['RotateArrow'] : ''}
+                  />
+                  <span>{item['title']}</span>
+                </span>
+                <button
+                  onClick={e => openListOptionsHandler(e, item['id'])}
+                  className={styles['OpenOptionsButton']}>
+                  <Icon iconName='threeDots' />
+                </button>
+                {item['isMenuOpen'] && (
+                  <ListDropdown
+                    newTaskRef={titleRef}
+                    isOpen
+                    onClose={() => dispatch(closeMenu(item['id']))}
+                  />
+                )}
               </div>
               <ul
                 className={`${styles['Tasks']} ${
@@ -57,16 +73,7 @@ const Lists: FC = () => {
                 }`}>
                 {item['tasks'].map((task: { id: number; title: string }) => (
                   <li className={styles['Task']} key={task['id']}>
-                    <svg
-                      width='16'
-                      height='16'
-                      viewBox='0 0 16 16'
-                      fill='#8A8F98'>
-                      <path
-                        fill-rule='evenodd'
-                        clip-rule='evenodd'
-                        d='M8 13.5C11.0376 13.5 13.5 11.0376 13.5 8C13.5 4.96243 11.0376 2.5 8 2.5C4.96243 2.5 2.5 4.96243 2.5 8C2.5 11.0376 4.96243 13.5 8 13.5ZM8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z'></path>
-                    </svg>
+                    <Icon iconName='solidCircle' />
                     {task['title']}
                   </li>
                 ))}
