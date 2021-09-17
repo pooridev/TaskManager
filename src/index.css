@@ -38,7 +38,7 @@ body::-webkit-scrollbar-track {
 :root {
   --bodyColor: rgb(31, 32, 35);
   --boxColor: rgb(39, 40, 43);
-  --boxShadow: rgb(0 0 0 / 7%) 0px 4px 44px;
+  --boxShadow: rgb(0 0 0 / 20%) 0px 4px 24px; 
   --activeButton: rgb(45, 47, 54);
   --sidebarBorder: rgb(48, 50, 54);
 }

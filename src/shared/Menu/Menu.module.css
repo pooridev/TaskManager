@@ -5,15 +5,18 @@
     rgb(45, 46, 49) 74.3%
   );
   position: absolute;
-  top: 120%;
+  top: 110%;
   left: 10rem;
   width: 80%;
+  transition: opacity 0.2s ease;
+  transition: top 0.2s ease;
   z-index: 5;
+  box-shadow: var(--boxShadow);
   @apply flex flex-col rounded-md opacity-0;
 }
 
 .Menu.Open {
-  transition: opacity 0.1s ease-in-out;
+  top: 120%;
   @apply opacity-100;
 }
 
